@@ -12,7 +12,7 @@ import appActions from '../../redux/app/actions';
 import Logo from '../../components/utility/logo';
 
 const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
+// const MenuItemGroup = Menu.ItemGroup;
 const { Sider } = Layout;
 
 const {
@@ -111,7 +111,7 @@ class Sidebar extends Component {
     );
   };
   render() {
-    const { app, toggleOpenDrawer, customizedTheme, height } = this.props;
+    const { app, toggleOpenDrawer, height } = this.props;
     const collapsed = clone(app.collapsed) && !clone(app.openDrawer);
     const { openDrawer } = app;
     const mode = collapsed === true ? 'vertical' : 'inline';
@@ -176,6 +176,11 @@ class Sidebar extends Component {
                 <Menu.Item key="3">
                   <Link to="/dashboard/forms/form3">
                     Form 3
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="4">
+                  <Link to="/dashboard/forms/form4">
+                    Form 4
                   </Link>
                 </Menu.Item>
 

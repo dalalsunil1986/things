@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Form from '../../components/uielements/form';
-import Input from '../../components/uielements/input';
+// import Form from '../../components/uielements/form';
+// import Input from '../../components/uielements/input';
 import PageHeader from '../../components/utility/pageHeader';
 import Box from '../../components/utility/box';
 import LayoutWrapper from '../../components/utility/layoutWrapper.js';
@@ -9,7 +9,7 @@ import IntlMessages from '../../components/utility/intlMessages';
 
 import PersonForm from "./PersonForm";
 
-const FormItem = Form.Item;
+// const FormItem = Form.Item;
 
 export default class extends Component {
   render() {
