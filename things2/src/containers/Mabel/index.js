@@ -8,8 +8,8 @@ import IntlMessages from '../../components/utility/intlMessages';
 import Box from '../../components/utility/box';
 import Input from '../../components/uielements/input';
 
-import Card from "../../components/uielements/card";
-import Badge from "../../components/uielements/badge";
+// import Card from "../../components/uielements/card";
+// import Badge from "../../components/uielements/badge";
 
 export default class extends Component {
   render() {

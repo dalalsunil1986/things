@@ -1,0 +1,6 @@
+{
+	"development": {
+		"migrationStorage": "json"
+		"migrationStoragePath": "processed-test.json"
+	}
+}

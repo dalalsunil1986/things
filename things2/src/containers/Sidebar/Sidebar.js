@@ -1,29 +1,28 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import clone from "clone";
-import { Link } from "react-router-dom";
-import { Layout } from "antd";
-import options from "./options";
-import Scrollbars from "../../components/utility/customScrollBar.js";
-import Menu from "../../components/uielements/menu";
-import IntlMessages from "../../components/utility/intlMessages";
-import SidebarWrapper from "./sidebar.style";
-import appActions from "../../redux/app/actions";
-import Logo from "../../components/utility/logo";
-import themes from "../../settings/themes";
-import { themeConfig } from "../../settings";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import clone from 'clone';
+import { Link } from 'react-router-dom';
+import { Layout } from 'antd';
+import options from './options';
+import Scrollbars from '../../components/utility/customScrollBar.js';
+import Menu from '../../components/uielements/menu';
+import IntlMessages from '../../components/utility/intlMessages';
+import SidebarWrapper from './sidebar.style';
+import appActions from '../../redux/app/actions';
+import Logo from '../../components/utility/logo';
 
 const SubMenu = Menu.SubMenu;
+const MenuItemGroup = Menu.ItemGroup;
 const { Sider } = Layout;
 
 const {
   toggleOpenDrawer,
   changeOpenKeys,
   changeCurrent,
-  toggleCollapsed
+  toggleCollapsed,
 } = appActions;
 const stripTrailingSlash = str => {
-  if (str.substr(-1) === "/") {
+  if (str.substr(-1) === '/') {
     return str.substr(0, str.length - 1);
   }
   return str;
@@ -37,7 +36,7 @@ class Sidebar extends Component {
   }
   handleClick(e) {
     this.props.changeCurrent([e.key]);
-    if (this.props.app.view === "MobileView") {
+    if (this.props.app.view === 'MobileView') {
       setTimeout(() => {
         this.props.toggleCollapsed();
         this.props.toggleOpenDrawer();
@@ -63,11 +62,11 @@ class Sidebar extends Component {
   }
   getAncestorKeys = key => {
     const map = {
-      sub3: ["sub2"]
+      sub3: ['sub2'],
     };
     return map[key] || [];
   };
-  getMenuItem = ({ singleOption, submenuStyle, submenuColor }) => {
+  getMenuItem = ({ singleOption }) => {
     const { key, label, leftIcon, children } = singleOption;
     const url = stripTrailingSlash(this.props.url);
     if (children) {
@@ -75,7 +74,7 @@ class Sidebar extends Component {
         <SubMenu
           key={key}
           title={
-            <span className="isoMenuHolder" style={submenuColor}>
+            <span className="isoMenuHolder" >
               <i className={leftIcon} />
               <span className="nav-text">
                 <IntlMessages id={label} />
@@ -88,8 +87,8 @@ class Sidebar extends Component {
               ? `/${child.key}`
               : `${url}/${child.key}`;
             return (
-              <Menu.Item style={submenuStyle} key={child.key}>
-                <Link style={submenuColor} to={linkTo}>
+              <Menu.Item  key={child.key}>
+                <Link  to={linkTo}>
                   <IntlMessages id={child.label} />
                 </Link>
               </Menu.Item>
@@ -101,7 +100,7 @@ class Sidebar extends Component {
     return (
       <Menu.Item key={key}>
         <Link to={`${url}/${key}`}>
-          <span className="isoMenuHolder" style={submenuColor}>
+          <span className="isoMenuHolder" >
             <i className={leftIcon} />
             <span className="nav-text">
               <IntlMessages id={label} />
@@ -112,10 +111,10 @@ class Sidebar extends Component {
     );
   };
   render() {
-    const { app, toggleOpenDrawer, height } = this.props;
+    const { app, toggleOpenDrawer, customizedTheme, height } = this.props;
     const collapsed = clone(app.collapsed) && !clone(app.openDrawer);
     const { openDrawer } = app;
-    const mode = collapsed === true ? "vertical" : "inline";
+    const mode = collapsed === true ? 'vertical' : 'inline';
     const onMouseEnter = event => {
       if (openDrawer === false) {
         toggleOpenDrawer();
@@ -128,17 +127,6 @@ class Sidebar extends Component {
       }
       return;
     };
-    const customizedTheme = themes[themeConfig.theme];
-    const styling = {
-      backgroundColor: customizedTheme.backgroundColor
-    };
-    const submenuStyle = {
-      backgroundColor: "rgba(0,0,0,0.3)",
-      color: customizedTheme.textColor
-    };
-    const submenuColor = {
-      color: customizedTheme.textColor
-    };
     return (
       <SidebarWrapper>
         <Sider
@@ -149,7 +137,6 @@ class Sidebar extends Component {
           className="isomorphicSidebar"
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
-          style={styling}
         >
           <Logo collapsed={collapsed} />
           <Scrollbars style={{ height: height - 70 }}>
@@ -163,8 +150,73 @@ class Sidebar extends Component {
               onOpenChange={this.onOpenChange}
             >
               {options.map(singleOption =>
-                this.getMenuItem({ submenuStyle, submenuColor, singleOption })
+                this.getMenuItem({ singleOption })
               )}
+
+
+              <SubMenu key="forms" title={
+                  <span className="isoMenuHolder">
+                    <i className="ion-android-options" />
+                    <span className="nav-text">
+                      Forms
+                    </span>
+                  </span>
+                }>
+
+                <Menu.Item key="1">
+                  <Link to="/dashboard/forms/form1">
+                    Form 1
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="2">
+                  <Link to="/dashboard/forms/form2">
+                    Form 2
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="3">
+                  <Link to="/dashboard/forms/form3">
+                    Form 3
+                  </Link>
+                </Menu.Item>
+
+              </SubMenu>
+
+{/*
+              <SubMenu
+                key="sub1"
+                title={
+                  <span className="isoMenuHolder" style={submenuColor}>
+                    <i className="ion-android-options" />
+                    <span className="nav-text">
+                      <IntlMessages id="sidebar.menuLevels" />
+                    </span>
+                  </span>
+                }
+              >
+                <MenuItemGroup
+                  key="g1"
+                  title={<IntlMessages id="sidebar.item1" />}
+                >
+                  <Menu.Item style={submenuStyle} key="1">
+                    <IntlMessages id="sidebar.option1" />
+                  </Menu.Item>
+                  <Menu.Item style={submenuStyle} key="2">
+                    <IntlMessages id="sidebar.option2" />
+                  </Menu.Item>
+                </MenuItemGroup>
+                <MenuItemGroup
+                  key="g2"
+                  title={<IntlMessages id="sidebar.item2" />}
+                >
+                  <Menu.Item style={submenuStyle} key="3">
+                    <IntlMessages id="sidebar.option3" />
+                  </Menu.Item>
+                  <Menu.Item style={submenuStyle} key="4">
+                    <IntlMessages id="sidebar.option4" />
+                  </Menu.Item>
+                </MenuItemGroup>
+              </SubMenu>
+*/}
             </Menu>
           </Scrollbars>
         </Sider>
@@ -176,7 +228,7 @@ class Sidebar extends Component {
 export default connect(
   state => ({
     app: state.App.toJS(),
-    height: state.App.toJS().height
+    height: state.App.toJS().height,
   }),
   { toggleOpenDrawer, changeOpenKeys, changeCurrent, toggleCollapsed }
 )(Sidebar);

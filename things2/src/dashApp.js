@@ -14,6 +14,10 @@ import { themeConfig } from "./settings";
 import DashAppHolder from "./dashAppStyle";
 import Boot from "./redux/boot";
 
+import {addUser} from "./redux/chat/actions";
+
+store.dispatch(addUser("Me"));
+
 const currentAppLocale =
   AppLocale[getCurrentLanguage(config.defaultLanguage || "english").locale];
 

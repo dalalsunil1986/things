@@ -1,4 +1,5 @@
 const txt = `
+Chat
 Email
 Ecommerce
 Shop

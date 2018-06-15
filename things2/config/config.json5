@@ -1,0 +1,7 @@
+{
+	a: 1,
+	database: {
+		database: "things-dev",
+		dialect: "postgres"
+	}
+}

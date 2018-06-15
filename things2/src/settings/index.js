@@ -13,9 +13,15 @@ const themeConfig = {
   layout: 'themedefault',
   theme: 'themedefault',
 };
+
+const googleConfig = {
+  apiKey: 'AIzaSyD945eWAaDAZg2iC0qmzKC63XX0PXKeIW8' //
+};
+
 const language = 'english';
 export {
   siteConfig,
   language,
+  googleConfig,
   themeConfig
 };

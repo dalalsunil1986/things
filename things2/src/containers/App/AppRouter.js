@@ -20,9 +20,37 @@ const routes = [
     component: asyncComponent(() => import("../Testable"))
   },
   {
+    path: "googlemap",
+    component: asyncComponent(() => import("../Map/googleMap"))
+  },
+  {
     path: "Mabel",
     component: asyncComponent(() => import("../Mabel"))
-  }
+  },
+  {
+    path: "chat",
+    component: asyncComponent(() => import("../Chat"))
+  },
+  {
+    path: "people",
+    component: asyncComponent(() => import("../People"))
+  },
+  {
+    path: "people/add",
+    component: asyncComponent(() => import("../People/Person"))
+  },
+  {
+    path: "forms/form1",
+    component: asyncComponent(() => import("../Forms/Form1"))
+  },
+  {
+    path: "forms/form2",
+    component: asyncComponent(() => import("../Forms/Form2"))
+  },
+  {
+    path: "forms/form3",
+    component: asyncComponent(() => import("../Forms/Form3"))
+  },
 ];
 
 class AppRouter extends Component {

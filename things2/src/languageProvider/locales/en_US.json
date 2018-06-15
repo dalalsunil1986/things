@@ -1,7 +1,16 @@
 {
-  "sidebar.email": "Email",
-  "sidebar.mabel": "Mabel",
   "sidebar.testable": "Testable",
+  "sidebar.mabel": "Mabel",
+  "sidebar.chat": "Chat",
+  "sidebar.people": "People",
+  "sidebar.people.add": "Add",
+
+  "Testable": "Testable",
+  "Mabel": "Mabel",
+  "Chat": "Chat",
+  "People": "People",
+
+  "sidebar.email": "Email",
   "sidebar.ecommerce": "Ecommerce",
   "sidebar.shop": "Shop",
   "sidebar.cart": "Cart",
