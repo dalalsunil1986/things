@@ -55,6 +55,18 @@ const routes = [
     path: "forms/form4",
     component: asyncComponent(() => import("../Forms/Form4"))
   },
+  {
+    path: "forms/form5",
+    component: asyncComponent(() => import("../Forms/Form5Layout"))
+  },
+  {
+    path: "forms/form6",
+    component: asyncComponent(() => import("../Forms/Form6List"))
+  },
+  {
+    path: "forms/form6/add",
+    component: asyncComponent(() => import("../Forms/Form6AddEdit"))
+  },
 ];
 
 class AppRouter extends Component {

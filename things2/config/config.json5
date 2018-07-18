@@ -1,7 +1,9 @@
 {
 	a: 1,
 	database: {
+//		uri: "postgres://localhost/things-dev",
 		database: "things-dev",
 		dialect: "postgres"
-	}
+	},
+	port: 3334,
 }

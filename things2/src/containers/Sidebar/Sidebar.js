@@ -183,6 +183,16 @@ class Sidebar extends Component {
                     Form 4
                   </Link>
                 </Menu.Item>
+                <Menu.Item key="5">
+                  <Link to="/dashboard/forms/form5">
+                    Form 5
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="6">
+                  <Link to="/dashboard/forms/form6">
+                    Form 6
+                  </Link>
+                </Menu.Item>
 
               </SubMenu>
 

@@ -9,15 +9,18 @@ import rootSaga from '../redux/sagas';
 const history = createHistory();
 const sagaMiddleware = createSagaMiddleware();
 const routeMiddleware = routerMiddleware(history);
-const middlewares = [thunk, sagaMiddleware, routeMiddleware];
+
+const api = "http://localhost:3334/api";
+const middlewares = [thunk.withExtraArgument(api), sagaMiddleware, routeMiddleware];
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   combineReducers({
     ...reducers,
     router: routerReducer
   }),
-  compose(applyMiddleware(...middlewares)),
-  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeEnhancers(applyMiddleware(...middlewares)),
 );
 sagaMiddleware.run(rootSaga);
 export { store, history };
